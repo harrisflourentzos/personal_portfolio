@@ -6,6 +6,7 @@ import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
 import { HashLink } from "react-router-hash-link";
 import { BrowserRouter as Router } from "react-router-dom";
+import staticData from "../data/static";
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
@@ -73,13 +74,13 @@ export const NavBar = () => {
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
-                <a href="#">
+                <a href={staticData.urls.linkedIn}>
                   <img src={navIcon1} alt="" />
                 </a>
-                <a href="#">
+                <a href={staticData.urls.github}>
                   <img src={navIcon2} alt="" />
                 </a>
-                <a href="#">
+                <a href={staticData.urls.instagram}>
                   <img src={navIcon3} alt="" />
                 </a>
               </div>
