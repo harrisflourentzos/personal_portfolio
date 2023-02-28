@@ -1,64 +1,86 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import arrow1 from "../assets/img/arrow1.svg";
-import arrow2 from "../assets/img/arrow2.svg";
-import colorSharp from "../assets/img/color-sharp.png"
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import csharpIcon from "../assets/img/csharp-icon.svg";
+import dotNetIcon from "../assets/img/dotNet-icon.png";
+import htmlIcon from "../assets/img/html5-icon.svg";
+import cssIcon from "../assets/img/css-icon.svg";
+import reactIcon from "../assets/img/react-icon.svg";
+import tsIcon from "../assets/img/ts-icon.svg";
+import jsIcon from "../assets/img/js-icon.svg";
+import rxIcon from "../assets/img/reactive-extensions-icon.svg";
+import staticData from "../data/static";
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+class Skill {
+  constructor(name, experienceType, experienceDuration, icon) {
+    this.name = name;
+    this.experienceType = experienceType;
+    this.experienceDuration = experienceDuration;
+    this.icon = icon;
+  }
+}
+
+const skills = [
+  new Skill("C#", "Commercial", 3, csharpIcon),
+  new Skill(".NET Core", "Commercial", 2, dotNetIcon),
+  new Skill("RX", "Commercial", 2, rxIcon),
+  new Skill("ReactJS", "Personal Projects", 1, reactIcon),
+  new Skill("HTML", "Personal Projects", 1, htmlIcon),
+  new Skill("CSS", "Personal Projects", 1, cssIcon),
+  new Skill("JavaScript", "Personal Projects", 1, jsIcon),
+  new Skill("TypeScript", "Personal Projects", 1, tsIcon),
+];
 
 export const Skills = () => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
+  const skillsElements = skills.map((item) => {
+    return (
+      <div className="item">
+        <img src={item.icon} alt={item.name} />
+        <h4>{item.name}</h4>
+        <h5>{"Years: " + item.experienceDuration}</h5>
+        <h5>{"Experience: " + item.experienceType}</h5>
+      </div>
+    );
+  });
 
   return (
     <section className="skill" id="skills">
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <div className="skill-bx wow zoomIn">
-                        <h2>Skills</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br></br> Lorem Ipsum has been the industry's standard dummy text.</p>
-                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>Brand Identity</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter3} alt="Image" />
-                                <h5>Logo Design</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                        </Carousel>
-                    </div>
-                </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <div className="skill-bx wow zoomIn">
+              <h2>Skills</h2>
+              <p>{staticData.skillsDescription}</p>
+              <Carousel
+                responsive={responsive}
+                infinite={true}
+                className="owl-carousel owl-theme skill-slider"
+              >
+                {skillsElements}
+              </Carousel>
             </div>
+          </div>
         </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
+      </div>
     </section>
-  )
-}
+  );
+};
