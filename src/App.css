@@ -23,6 +23,11 @@
   --black-color: #121212;
   --white-color: #fff;
   --grey-text-color: #b8b8b8;
+  --purple-violet-linear-gradient: linear-gradient(
+    90.21deg,
+    #aa367c -5.91%,
+    #4a2fbd 111.58%
+  );
 }
 
 /************ Default Css ************/
@@ -258,9 +263,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   padding: 260px 0 100px 0;
   background: linear-gradient(
     135deg,
-    var(--violet-color-200) -5.91%,
-    var(--black-color),
-    var(--purple-color) 111.58%
+    var(--violet-color-200) 0%,
+    var(--black-color) 40% 70%,
+    var(--purple-color) 100%
   );
 }
 .banner .tagline {
@@ -295,17 +300,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   line-height: 1.5em;
   width: 96%;
 }
+.banner .button-container {
+  margin-top: 60px;
+}
 .banner button {
   color: var(--white-color);
   font-weight: 700;
   font-size: 20px;
-  margin-top: 60px;
+  margin-bottom: 16px;
   letter-spacing: 0.8px;
   display: flex;
   align-items: center;
-}
-.banner .cv {
-  margin-top: 20px;
 }
 .banner button svg {
   font-size: 25px;
@@ -394,22 +399,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-align: center;
   width: 56%;
 }
-.project .nav.nav-pills {
-  width: 72%;
-  margin: 0 auto;
-  border-radius: 50px;
-  background-color: rgb(255 255 255 / 10%);
-  overflow: hidden;
-}
-.project .nav.nav-pills .nav-item {
-  width: 33.33333%;
-}
 .project .nav.nav-pills .nav-link {
-  background-color: transparent;
-  border-radius: 0;
-  padding: 17px 0;
+  background-color: #121212;
+  width: 120px;
   color: #fff;
-  width: 100%;
   font-size: 17px;
   letter-spacing: 0.8px;
   font-weight: 500;
@@ -419,11 +412,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: 0;
 }
 .project .nav.nav-pills .nav-link::before {
+  border-radius: 10px;
   content: "";
   position: absolute;
   width: 0;
   height: 100%;
-  background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+  background: var(--purple-violet-linear-gradient);
   top: 0;
   left: 0;
   z-index: -1;
@@ -431,21 +425,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .project .nav.nav-pills .nav-link.active::before {
   width: 100% !important;
-}
-.project .nav.nav-pills .nav-link.active {
-  border: 1px solid rgba(255, 255, 255, 1);
-}
-.nav-link#projects-tabs-tab-first {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 55px 0px 0px 55px;
-}
-.nav-link#projects-tabs-tab-second {
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-}
-.nav-link#projects-tabs-tab-third {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 0 55px 55px 0;
 }
 .proj-imgbx {
   position: relative;
@@ -455,7 +434,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .proj-imgbx::before {
   content: "";
-  background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+  background: var(--purple-violet-linear-gradient);
   opacity: 0.85;
   position: absolute;
   width: 100%;
@@ -500,7 +479,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: -4;
 }
 
-/************ Projects Css ************/
+/************ Contact Css ************/
 .contact {
   background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
   padding: 60px 0 200px 0;

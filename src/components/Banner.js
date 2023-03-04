@@ -47,6 +47,28 @@ export const Banner = () => {
     }
   };
 
+  function downloadCVHandler() {
+    // using Java Script method to get PDF file
+    fetch("CV.pdf").then((response) => {
+      response.blob().then((blob) => {
+        // Create blob link to download
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "CV.pdf");
+
+        // Append to html link element page
+        document.body.appendChild(link);
+
+        // Start download
+        link.click();
+
+        // Clean up and remove the link
+        link.parentNode.removeChild(link);
+      });
+    });
+  }
+
   return (
     <section className="banner" id="home">
       <Container>
@@ -65,12 +87,14 @@ export const Banner = () => {
                     <span className="wrap">{text}</span>
                   </h1>
                   <p>{staticData.homeDescription}</p>
-                  <button onClick={() => console.log("connect")}>
-                    Let’s Connect <ArrowRightCircle size={25} />
-                  </button>
-                  <button className="cv" onClick={() => console.log("CV")}>
-                    Download CV <Download size={25} />
-                  </button>
+                  <div className="button-container">
+                    <button onClick={() => console.log("connect")}>
+                      Let’s Connect <ArrowRightCircle size={25} />
+                    </button>
+                    <button className="cv" onClick={downloadCVHandler}>
+                      Download CV <Download size={25} />
+                    </button>
+                  </div>
                 </div>
               )}
             </TrackVisibility>

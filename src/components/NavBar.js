@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from "../assets/img/logo.svg";
-import navIcon1 from "../assets/img/nav-icon1.svg";
-import navIcon2 from "../assets/img/nav-icon2.svg";
-import navIcon3 from "../assets/img/nav-icon3.svg";
+import linkedInIcon from "../assets/img/linkedIn-icon.svg";
+import githubIcon from "../assets/img/github-icon.svg";
+import instagramIcon from "../assets/img/instagram-icon.svg";
 import { HashLink } from "react-router-hash-link";
 import { BrowserRouter as Router } from "react-router-dom";
 import staticData from "../data/static";
@@ -75,13 +75,13 @@ export const NavBar = () => {
             <span className="navbar-text">
               <div className="social-icon">
                 <a href={staticData.urls.linkedIn}>
-                  <img src={navIcon1} alt="" />
+                  <img src={linkedInIcon} alt="" />
                 </a>
                 <a href={staticData.urls.github}>
-                  <img src={navIcon2} alt="" />
+                  <img src={githubIcon} alt="" />
                 </a>
                 <a href={staticData.urls.instagram}>
-                  <img src={navIcon3} alt="" />
+                  <img src={instagramIcon} alt="" />
                 </a>
               </div>
               <HashLink to="#connect">

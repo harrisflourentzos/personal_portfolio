@@ -53,7 +53,7 @@ const skills = [
 export const Skills = () => {
   const skillsElements = skills.map((item) => {
     return (
-      <div className="item">
+      <div className="item" key={item.name}>
         <img src={item.icon} alt={item.name} />
         <h4>{item.name}</h4>
         <h5>{"Years: " + item.experienceDuration}</h5>

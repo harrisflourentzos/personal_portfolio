@@ -1,98 +1,116 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
-import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
+import "animate.css";
+import staticData from "../data/static";
+import mobileProjImg1 from "../assets/img/mobile-proj1.png";
+import webProjImg1 from "../assets/img/web-proj1.png";
+import webProjImg2 from "../assets/img/web-proj2.png";
+
+const ProjectTypes = { web: "Web", mobile: "Mobile", desktop: "Desktop" };
+
+class Project {
+  constructor(title, description, type, img, stack, repo) {
+    this.title = title;
+    this.description = description;
+    this.type = type;
+    this.img = img;
+    this.stack = stack;
+    this.repo = repo;
+  }
+}
+
+const projects = [
+  new Project(
+    "My TODO App",
+    "A Web app that allows the user to create and save to do lists",
+    ProjectTypes.web,
+    webProjImg1,
+    "ReactJS",
+    staticData.urls.github.repos.webApp
+  ),
+  new Project(
+    "My Web App",
+    "A Web app that allows the user to create and save to do lists",
+    ProjectTypes.web,
+    webProjImg2,
+    "NextJS",
+    staticData.urls.github.repos.webApp
+  ),
+  new Project(
+    "The Boring Game",
+    "A thrilling guess the number game",
+    ProjectTypes.mobile,
+    mobileProjImg1,
+    "React Native",
+    staticData.urls.github.repos.boringApp
+  ),
+
+  new Project(
+    "MSc Project",
+    "A Keepass2 Password Manager UI redisign in WPF",
+    ProjectTypes.desktop,
+    webProjImg1,
+    "WPF, C#",
+    staticData.urls.github.repos.MScProject
+  ),
+];
 
 export const Projects = () => {
+  const navItems = Object.keys(ProjectTypes).map((pt) => {
+    const type = ProjectTypes[pt];
+    return (
+      <Nav.Item key={pt}>
+        <Nav.Link eventKey={type}>{type}</Nav.Link>
+      </Nav.Item>
+    );
+  });
 
-  const projects = [
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-    },
-  ];
+  const panes = Object.keys(ProjectTypes).map((pt) => {
+    const type = ProjectTypes[pt];
+    return (
+      <Tab.Pane eventKey={type} key={pt}>
+        <Row>
+          {projects
+            .filter((p) => p.type === type)
+            .map((project, index) => {
+              return <ProjectCard key={index} {...project} />;
+            })}
+        </Row>
+      </Tab.Pane>
+    );
+  });
 
   return (
-    <section className="project" id="project">
+    <section className="project" id="projects">
       <Container>
         <Row>
           <Col size={12}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
-                <h2>Projects</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                  <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
-                    <Nav.Item>
-                      <Nav.Link eventKey="first">Tab 1</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link eventKey="third">Tab 3</Nav.Link>
-                    </Nav.Item>
-                  </Nav>
-                  <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
-                    <Tab.Pane eventKey="first">
-                      <Row>
-                        {
-                          projects.map((project, index) => {
-                            return (
-                              <ProjectCard
-                                key={index}
-                                {...project}
-                                />
-                            )
-                          })
-                        }
-                      </Row>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
-                    </Tab.Pane>
-                  </Tab.Content>
-                </Tab.Container>
-              </div>}
-            </TrackVisibility>
+            <div>
+              <h2>Projects</h2>
+              <p>{staticData.projectsDescription}</p>
+              <Tab.Container
+                id="projects-tabs"
+                defaultActiveKey={ProjectTypes.web}
+              >
+                <Nav
+                  variant="pills"
+                  className="nav-pills mb-5 justify-content-center align-items-center"
+                  id="pills-tab"
+                >
+                  {navItems}
+                </Nav>
+                <Tab.Content>{panes}</Tab.Content>
+              </Tab.Container>
+            </div>
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src={colorSharp2}></img>
+      <img
+        className="background-image-right"
+        src={colorSharp2}
+        alt="backgroundImg"
+      ></img>
     </section>
-  )
-}
+  );
+};
