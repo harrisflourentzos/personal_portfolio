@@ -17,13 +17,21 @@ export const Footer = () => {
           </Col>
           <Col size={12} sm={6} className="text-center text-sm-end">
             <div className="social-icon">
-              <a href={staticData.urls.linkedIn}>
+              <a
+                href={staticData.urls.linkedIn}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src={linkedInIcon} alt="Icon" />
               </a>
-              <a href={staticData.urls.github}>
+              <a href={staticData.urls.github} target="_blank" rel="noreferrer">
                 <img src={githubIcon} alt="Icon" />
               </a>
-              <a href={staticData.urls.instagram}>
+              <a
+                href={staticData.urls.instagram}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src={instagramIcon} alt="Icon" />
               </a>
             </div>
