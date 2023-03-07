@@ -1,20 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import useHttp from "../hooks/use-https";
+import { addMessage } from "../lib/firebaseApi";
 import contactImg from "../assets/img/contact-img.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 
+const formInitialDetails = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  message: "",
+};
+
 export const Contact = () => {
-  const formInitialDetails = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    message: "",
-  };
   const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState("Send");
-  const [status, setStatus] = useState({});
+  const { sendRequest, status, error } = useHttp(addMessage);
 
   const onFormUpdate = (category, value) => {
     setFormDetails({
@@ -23,27 +25,15 @@ export const Contact = () => {
     });
   };
 
+  useEffect(() => {
+    if (status === "completed" && !error) {
+      setFormDetails(formInitialDetails);
+    }
+  }, [status, error, setFormDetails]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setButtonText("Sending...");
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code === 200) {
-      setStatus({ succes: true, message: "Message sent successfully" });
-    } else {
-      setStatus({
-        succes: false,
-        message: "Something went wrong, please try again later.",
-      });
-    }
+    sendRequest(formDetails);
   };
 
   return (
@@ -87,7 +77,7 @@ export const Contact = () => {
                       <Col size={12} sm={6} className="px-1">
                         <input
                           type="text"
-                          value={formDetails.lasttName}
+                          value={formDetails.lastName}
                           placeholder="Last Name"
                           onChange={(e) =>
                             onFormUpdate("lastName", e.target.value)
@@ -124,17 +114,15 @@ export const Contact = () => {
                           }
                         ></textarea>
                         <button type="submit">
-                          <span>{buttonText}</span>
+                          <span>
+                            {status === "pending" ? "Sending..." : "Send"}
+                          </span>
                         </button>
                       </Col>
-                      {status.message && (
+                      {status === "completed" && (
                         <Col>
-                          <p
-                            className={
-                              status.success === false ? "danger" : "success"
-                            }
-                          >
-                            {status.message}
+                          <p className={error ? "danger" : "success"}>
+                            {error ?? "Your message has been sent!"}
                           </p>
                         </Col>
                       )}
