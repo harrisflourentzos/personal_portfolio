@@ -28,6 +28,11 @@
     #aa367c -5.91%,
     #4a2fbd 111.58%
   );
+  --purple-violet-linear-gradient-45: linear-gradient(
+    45deg,
+    #aa367c -5.91%,
+    #4a2fbd 111.58%
+  );
 }
 
 /************ Default Css ************/
@@ -106,6 +111,29 @@ p.success {
 
 p.danger {
   color: red;
+}
+
+/************ Logo Css ************/
+
+/* fallback for IE */
+.logo .gradient-text {
+  color: var(--white-color);
+  font-size: 50px;
+}
+/* gradient text for modern browsers */
+@supports (background-clip: text) {
+  .logo .gradient-text {
+    background-image: var(--purple-violet-linear-gradient-45);
+    background-clip: text;
+    color: transparent;
+    font-size: 50px;
+  }
+}
+
+.logo span {
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--white-color);
 }
 
 /************ Social Icons Css ************/
@@ -486,6 +514,36 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 35%;
   right: 0;
   z-index: -4;
+}
+
+/************ Work Css ************/
+.work {
+  padding: 0 0 50px 0;
+  position: relative;
+}
+.work-bx {
+  background: #151515;
+  border-radius: 64px;
+  text-align: center;
+  padding: 60px 50px;
+  margin-top: -60px;
+}
+.work h2 {
+  font-size: 45px;
+  font-weight: 700;
+}
+.work h3 {
+  margin-top: 20px;
+}
+.work h4 {
+  margin-top: 20px;
+}
+.work .work-item-row {
+  margin: 60px;
+}
+
+.work img {
+  width: 30%;
 }
 
 /************ Contact Css ************/

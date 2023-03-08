@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import useHttp from "../hooks/use-https";
-import { addMessage } from "../lib/firebaseApi";
-import contactImg from "../assets/img/contact-img.png";
+import useHttp from "../../hooks/use-https";
+import { addMessage } from "../../lib/firebaseApi";
+import contactImg from "../../assets/img/contact-img.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 

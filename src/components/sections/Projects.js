@@ -1,11 +1,11 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import { ProjectCard } from "./ProjectCard";
-import colorSharp2 from "../assets/img/color-sharp2.png";
+import { ProjectCard } from "../ui/ProjectCard";
+import colorSharp2 from "../../assets/img/color-sharp2.png";
 import "animate.css";
-import staticData from "../data/static";
-import mobileProjImg1 from "../assets/img/mobile-proj1.png";
-import webProjImg1 from "../assets/img/web-proj1.png";
-import webProjImg2 from "../assets/img/web-proj2.png";
+import staticData from "../../data/static";
+import mobileProjImg1 from "../../assets/img/mobile-proj1.png";
+import webProjImg1 from "../../assets/img/web-proj1.png";
+import webProjImg2 from "../../assets/img/web-proj2.png";
 
 const ProjectTypes = { web: "Web", mobile: "Mobile", desktop: "Desktop" };
 

@@ -1,10 +1,10 @@
 import { Container, Row, Col } from "react-bootstrap";
-import logo from "../assets/img/logo.svg";
-import linkedInIcon from "../assets/img/linkedIn-icon.svg";
-import githubIcon from "../assets/img/github-icon.svg";
-import instagramIcon from "../assets/img/instagram-icon.svg";
-import staticData from "../data/static";
-import { Newsletter } from "./Newsletter";
+import { Newsletter } from "../ui/Newsletter";
+import { Logo } from "../ui/Logo";
+import linkedInIcon from "../../assets/img/linkedIn-icon.svg";
+import githubIcon from "../../assets/img/github-icon.svg";
+import instagramIcon from "../../assets/img/instagram-icon.svg";
+import staticData from "../../data/static";
 
 export const Footer = () => {
   return (
@@ -13,7 +13,7 @@ export const Footer = () => {
         <Row className="align-items-center">
           <Newsletter />
           <Col size={12} sm={6}>
-            <img src={logo} alt="Logo" />
+            <Logo />
           </Col>
           <Col size={12} sm={6} className="text-center text-sm-end">
             <div className="social-icon">

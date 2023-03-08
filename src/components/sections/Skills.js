@@ -1,14 +1,14 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import csharpIcon from "../assets/img/csharp-icon.svg";
-import dotNetIcon from "../assets/img/dotNet-icon.png";
-import htmlIcon from "../assets/img/html5-icon.svg";
-import cssIcon from "../assets/img/css-icon.svg";
-import reactIcon from "../assets/img/react-icon.svg";
-import tsIcon from "../assets/img/ts-icon.svg";
-import jsIcon from "../assets/img/js-icon.svg";
-import rxIcon from "../assets/img/reactive-extensions-icon.svg";
-import staticData from "../data/static";
+import csharpIcon from "../../assets/img/csharp-icon.svg";
+import dotNetIcon from "../../assets/img/dotNet-icon.png";
+import htmlIcon from "../../assets/img/html5-icon.svg";
+import cssIcon from "../../assets/img/css-icon.svg";
+import reactIcon from "../../assets/img/react-icon.svg";
+import tsIcon from "../../assets/img/ts-icon.svg";
+import jsIcon from "../../assets/img/js-icon.svg";
+import rxIcon from "../../assets/img/reactive-extensions-icon.svg";
+import staticData from "../../data/static";
 
 const responsive = {
   superLargeDesktop: {

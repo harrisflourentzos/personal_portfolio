@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Col, Row, Alert } from "react-bootstrap";
-import useHttp from "../hooks/use-https";
-import { addSubscriber } from "../lib/firebaseApi";
+import useHttp from "../../hooks/use-https";
+import { addSubscriber } from "../../lib/firebaseApi";
 
 export const Newsletter = () => {
   const [email, setEmail] = useState("");
