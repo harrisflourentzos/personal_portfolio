@@ -11,8 +11,8 @@ const staticData = {
       profile: "https://github.com/harrisflourentzos/",
       repos: {
         boringApp: "https://github.com/harrisflourentzos/game-app-ts",
-        webApp: "",
-        MScProject: "",
+        webApp: "https://github.com/harrisflourentzos/",
+        MScProject: "https://github.com/harrisflourentzos/Keepass2FrontEnd",
       },
     },
     instagram: "https://www.instagram.com/lrentzo/",
