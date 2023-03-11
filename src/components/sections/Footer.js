@@ -24,7 +24,11 @@ export const Footer = () => {
               >
                 <img src={linkedInIcon} alt="Icon" />
               </a>
-              <a href={staticData.urls.github} target="_blank" rel="noreferrer">
+              <a
+                href={staticData.urls.github.profile}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src={githubIcon} alt="Icon" />
               </a>
               <a

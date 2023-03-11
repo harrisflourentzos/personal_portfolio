@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Col, Row, Alert } from "react-bootstrap";
 import useHttp from "../../hooks/use-https";
-import { addSubscriber } from "../../lib/firebaseApi";
+import { addSubscriber } from "../../lib/firebaseService";
 
 export const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -17,11 +17,7 @@ export const Newsletter = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (validateEmail(email.trim())) sendRequest(email);
-  }
-
-  function validateEmail(email) {
-    return email && email.includes("@");
+    sendRequest(email);
   }
 
   return (

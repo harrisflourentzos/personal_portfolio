@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import useHttp from "../../hooks/use-https";
-import { addMessage } from "../../lib/firebaseApi";
+import { sendMessage } from "../../lib/firebaseService";
 import contactImg from "../../assets/img/contact-img.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
@@ -16,7 +16,7 @@ const formInitialDetails = {
 
 export const Contact = () => {
   const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const { sendRequest, status, error } = useHttp(addMessage);
+  const { sendRequest, status, error } = useHttp(sendMessage);
 
   const onFormUpdate = (category, value) => {
     setFormDetails({

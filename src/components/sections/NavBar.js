@@ -73,7 +73,7 @@ export const NavBar = () => {
                   <img src={linkedInIcon} alt="" />
                 </a>
                 <a
-                  href={staticData.urls.github}
+                  href={staticData.urls.github.profile}
                   target="_blank"
                   rel="noreferrer"
                 >

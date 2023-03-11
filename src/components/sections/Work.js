@@ -44,17 +44,17 @@ const workExperiencesElements = workExperiences.map((we) => {
   return (
     <Row className="align-items-center" key={we.companyName}>
       <Col>
-        <h4>{we.duration}</h4>
+        <h5>[{we.duration}]</h5>
       </Col>
       <Col>
         <div className="work-item-row">
           <img src={we.companyLogo} alt={we.companyName}></img>
           <h3>{we.companyName}</h3>
-          <h4>{we.jobTitle}</h4>
+          <h5>{we.jobTitle}</h5>
         </div>
       </Col>
       <Col>
-        <h4>{we.stack}</h4>
+        <h5>{we.stack}</h5>
       </Col>
     </Row>
   );
