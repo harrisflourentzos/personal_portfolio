@@ -1,5 +1,5 @@
 import { Col } from "react-bootstrap";
-import githubIcon from "../assets/img/github-icon.svg";
+import githubIcon from "../../assets/img/github-icon.svg";
 
 export const ProjectCard = ({ title, description, img, stack, repo }) => {
   return (
