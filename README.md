@@ -2,13 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<img width="1266" alt="Screen Shot 2022-06-19 at 2 18 18 PM" src="https://user-images.githubusercontent.com/50160672/174933373-1ba6cadf-1c9a-48c3-aa58-984d0bd62d82.png">
+It is inspired by a public portfolio project (https://youtu.be/hYv6BM2fWd8), but with major refactoring of the codebase,
+along bug fixes, improvements and using Firebase as a back-end.
 
 Built using:
 
 - Front-end library: React
 - CSS framework: React-bootstrap
 - CSS animations library: Animate.css
+- Back-end: Firebase
 
 In the /personal-portfolio, you can run:
 
